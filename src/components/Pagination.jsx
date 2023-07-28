@@ -1,34 +1,42 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import paginationSlice from "../store/pagination-slice";
+import paginationSlice, { paginationActions } from "../store/pagination-slice";
 
-const Pagination = ({ onPrevPage, onNextPage }) => {
+const Pagination = () => {
     const dispatch = useDispatch(paginationSlice);
 
     //data from app-slice
     const data = useSelector((state) => state.app);
-    const fetchedNotes = data.allNotes;
+    const fetchedNotes = data.searchedNotes;
     const dataPerPage = data.dataPerPage;
 
     //data from pagination-slice
     const currentPage = useSelector((state) => state.pagination.currentPage);
 
     const pageNumbers = [];
-    const totalNotes = fetchedNotes.length;
+    const totalNotesAmount = fetchedNotes.length;
 
-    for (let i = 1; i <= Math.ceil(totalNotes / dataPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalNotesAmount / dataPerPage); i++) {
         pageNumbers.push(i);
     }
+
+    const onNextPageHandler = () => {
+        dispatch(paginationActions.increment());
+    };
+
+    const onPrevPageHandler = () => {
+        dispatch(paginationActions.decrement());
+    };
 
     return (
         <nav className='flex flex-row gap-2'>
             <button
                 type='button'
                 className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed'
-                onClick={() => dispatch.increment()}
+                onClick={onPrevPageHandler}
                 disabled={currentPage === 1}
             >
-                Назад
+                <a href={`#/posts/${currentPage}`}>Назад</a>
             </button>
             <ul className='flex flex-row justify-center items-center gap-2'>
                 {pageNumbers.map((number) => (
@@ -40,10 +48,10 @@ const Pagination = ({ onPrevPage, onNextPage }) => {
             <button
                 type='button'
                 className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed'
-                onClick={onNextPage}
+                onClick={onNextPageHandler}
                 disabled={currentPage === pageNumbers.length}
             >
-                Далее
+                <a href={`#/posts/${currentPage}`}>Далее</a>
             </button>
         </nav>
     );

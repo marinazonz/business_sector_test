@@ -4,8 +4,10 @@ import axios from "axios";
 const initialState = {
     loading: false,
     allNotes: [],
+    searchedNotes: [],
     error: "",
     dataPerPage: 10,
+    searchField: "",
 };
 
 export const fetchNotes = createAsyncThunk("store/fetchNotes", () => {
@@ -19,16 +21,25 @@ export const fetchNotes = createAsyncThunk("store/fetchNotes", () => {
 const appSlice = createSlice({
     name: "app",
     initialState,
+    reducers: {
+        setNotesAfterSearch(state, action) {
+            state.searchedNotes = action.payload;
+        },
+        setSeacrhField(state, action) {
+            state.searchField = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchNotes.pending, (state) => {
             state.loading = true;
         });
         builder.addCase(fetchNotes.fulfilled, (state, action) => {
-            console.log(action);
             state.loading = false;
             state.allNotes = action.payload;
+            state.searchedNotes = action.payload;
             state.error = "";
         });
+
         builder.addCase(fetchNotes.rejected, (state, action) => {
             state.loading = false;
             state.allNotes = [];

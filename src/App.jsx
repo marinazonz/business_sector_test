@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
 import { fetchNotes } from "./store/app-slice";
-import Navbar from "./components/Navbar";
-import Tab from "./components/Tab/Tab";
-import Pagination from "./components/Pagination";
+import AppPage from "./pages/AppPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -13,19 +12,12 @@ function App() {
         dispatch(fetchNotes());
     }, [dispatch]);
 
-    const onNextPageHandler = () => {
-        setCurrentPage((page) => page + 1);
-    };
-    const onPrevPageHandler = () => {
-        setCurrentPage((page) => page - 1);
-    };
-
     return (
-        <div className='bg-white py-3 px-5'>
-            <Navbar />
-            <Tab />
-            <Pagination />
-        </div>
+        <main>
+            <Routes>
+                <Route path={`/`} element={<AppPage />} />
+            </Routes>
+        </main>
     );
 }
 

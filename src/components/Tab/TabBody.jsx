@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 const TabBody = () => {
     //data from app-slice
     const data = useSelector((state) => state.app);
-    const fetchedNotes = data.allNotes;
+    const fetchedNotes = data.searchedNotes;
     const dataPerPage = data.dataPerPage;
 
     //data from pagination-slice
@@ -16,10 +16,10 @@ const TabBody = () => {
 
     return (
         <>
-            <tbody className='text-xs text-[#474955] font-medium'>
+            <tbody className='text-xs sm:text-sm text-[#474955] font-medium'>
                 {currentNotes.map((note) => {
                     return (
-                        <tr key={note.id}>
+                        <tr key={note.id} className=''>
                             <td className='border border-[#E3E6EC]'>
                                 {note.id}
                             </td>
