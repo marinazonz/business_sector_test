@@ -34,7 +34,7 @@ const NavbarSearch = () => {
 
     return (
         <form
-            className='w-full md:w-[39.438rem] h-[3.25rem] bg-[#5A5C66] flex flex-row justify-between items-center gap-4 px-5'
+            className='w-full sm:w-[39.438rem] h-[3.25rem] bg-[#5A5C66] flex flex-row justify-between items-center gap-4 px-5'
             onSubmit={submitHandler}
         >
             <input

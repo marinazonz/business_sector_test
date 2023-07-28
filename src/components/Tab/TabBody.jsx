@@ -16,7 +16,7 @@ const TabBody = () => {
 
     return (
         <>
-            <tbody className='text-xs sm:text-sm text-[#474955] font-medium'>
+            <tbody className='text-xs sm:text-sm md:text-base text-[#474955] font-medium'>
                 {currentNotes.map((note) => {
                     return (
                         <tr key={note.id} className=''>

@@ -29,16 +29,16 @@ const Pagination = () => {
     };
 
     return (
-        <nav className='flex flex-row gap-2'>
+        <nav className='flex flex-row justify-between md:justify-around items-center gap-2 pt-3 font-medium'>
             <button
                 type='button'
-                className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed'
+                className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed text-base md:text-xl'
                 onClick={onPrevPageHandler}
                 disabled={currentPage === 1}
             >
                 <a href={`#/posts/${currentPage}`}>Назад</a>
             </button>
-            <ul className='flex flex-row justify-center items-center gap-2'>
+            <ul className='flex flex-row justify-center items-center gap-2 text-base md:text-lg italic'>
                 {pageNumbers.map((number) => (
                     <li key={number}>
                         <a href={number}>{number}</a>
@@ -47,7 +47,7 @@ const Pagination = () => {
             </ul>
             <button
                 type='button'
-                className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed'
+                className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed text-base md:text-xl'
                 onClick={onNextPageHandler}
                 disabled={currentPage === pageNumbers.length}
             >

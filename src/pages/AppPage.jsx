@@ -4,7 +4,7 @@ import Tab from "../components/Tab/Tab";
 
 const AppPage = () => {
     return (
-        <div className='bg-white py-3 px-2 md:px-5'>
+        <div className='bg-white py-3 px-3 md:pt-10 md:px-16'>
             <Navbar />
             <Tab />
             <Pagination />

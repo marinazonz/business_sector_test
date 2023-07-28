@@ -10,7 +10,7 @@ const Tab = () => {
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
-                <table className='lg:w-[1077px] table-auto container'>
+                <table className='table-auto container'>
                     <TabHead />
                     <TabBody />
                 </table>

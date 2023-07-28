@@ -32,7 +32,7 @@ const TabHead = () => {
 
     return (
         <thead>
-            <tr className='text-[#FFFFFF] font-semibold text-xs sm:text-sm bg-[#474955] h-[54px] text-center'>
+            <tr className='text-[#FFFFFF] font-semibold text-xs sm:text-sm md:text-base bg-[#474955] h-[54px] text-center'>
                 <th scope='col' onClick={() => onFilterHandler("id")}>
                     <div className='h-full w-full flex flex-row justify-center items-center gap-1 cursor-pointer'>
                         <span>ID</span>
